@@ -7,7 +7,7 @@
 xmlns="http://www.w3.org/2000/svg">
 
 <path
-	d="M0 0 h3 v3 h-3 v-1 h2 v-1 h-2 Z M0 1 h1 v1 h-1 Z M2 3 h1 v2 h-3 v-1 h2 Z"
+	d="M0 0 h3 v5 h-3 v-1 h2 v-1 h-2 Z M1 1 v1 h1 v-1 Z"
 	style="fill:#000000;"
 	transform="translate(1 1)"
 />
