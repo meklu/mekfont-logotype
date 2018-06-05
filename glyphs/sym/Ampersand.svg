@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="7" height="8" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+<path
+d="M4 4 h1 v-1 h-1 v2 h-4 v-2 h2 v-3 h-1 v2 h-1 v-1 h3 v1 h-2 v2 h1 v-1 h1 v1 Z"
+style="fill:#000000;"
+transform="translate(1 1)"
+/>
+
+</svg>
