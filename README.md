@@ -11,3 +11,17 @@ paths for the glyphs themselves.
 ## Building the font/doing anything at all what-so-ever
 
 *TBD*
+
+## What's done
+
+- [ ] Glyphs
+	- [x] Alphanumeric
+		- [x] Standard Latin
+		- [x] åäö
+		- [x] Numerals
+	- [x] Symbols
+	- [ ] Auxiliary keyboard imagery
+
+- [ ] Font
+	- [ ] Glyph metadata? Think baseline/spacing/etc.
+	- [ ] Font generator utility/script
