@@ -1,72 +1,89 @@
-<?xml version="1.0" standalone="yes"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-	<defs>
-		<font id="mekfont_logo" horiz-adv-x="8">
-			<font-face font-family="mekfont logo" font-weight="normal" font-style="normal" units-per-em="8" cap-height="6" x-height="4" ascent="6" descent="2" alphabetic="0" mathematical="0" ideographic="0" hanging="0">
-				<font-face-src>
-					<font-face-name name="mekfont logo" />
-				</font-face-src>
-			</font-face>
-			<missing-glyph><path d="M0 0 v4 h8 v-4 Z" /></missing-glyph>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg>
+  <metadata>mekfont-logotype by meklu</metadata>
+  <defs>
+    <font id="mekfont-logo" horiz-adv-x="8">
+      <font-face
+        font-family="mekfont-logo"
+        font-weight="400"
+        font-style="normal"
+        font-stretch="normal"
+        units-per-em="8"
+        cap-height="6"
+        x-height="4"
+        bbox="0 0 8 8"
+        ascent="6"
+        descent="2"
+        alphabetic="0"
+        mathematical="0"
+        ideographic="0"
+        hanging="0"
+      >
+        <font-face-src>
+          <font-face-name name="mekfont-logo" />
+        </font-face-src>
+      </font-face>
+      <missing-glyph horiz-adv-x="5" d="M0 0 h4 v8 h-4 Z" />
 
-			<!-- Our generator will turn the following into good stuff™ -->
-			<!-- It'll read our glyph files and drop the style attribute of each symbol -->
+      <!-- Our generator will turn the following into good stuff™ -->
+      <!-- It'll read our glyph files and drop the style attribute of each symbol -->
 
-			<!-- alphabet -->
-			<!--MEKFNT glyph alpha [a-z] $pass-->
-			<!--MEKFNT glyph alpha [a-z] $upper-->
-			<!--MEKFNT glyph alpha aring å-->
-			<!--MEKFNT glyph alpha aring Å-->
-			<!--MEKFNT glyph alpha adiaeresis ä-->
-			<!--MEKFNT glyph alpha adiaeresis Ä-->
-			<!--MEKFNT glyph alpha odiaeresis ö-->
-			<!--MEKFNT glyph alpha odiaeresis Ö-->
+      <!-- alphabet -->
+      <!--MEKFNT glyph alpha [a-z] $pass-->
+      <!--MEKFNT glyph alpha [a-z] $upper-->
+      <!--MEKFNT glyph alpha aring å-->
+      <!--MEKFNT glyph alpha aring Å-->
+      <!--MEKFNT glyph alpha adiaeresis ä-->
+      <!--MEKFNT glyph alpha adiaeresis Ä-->
+      <!--MEKFNT glyph alpha odiaeresis ö-->
+      <!--MEKFNT glyph alpha odiaeresis Ö-->
 
-			<!-- numbers -->
-			<!--MEKFNT glyph num [0-9] $pass-->
+      <!-- numbers -->
+      <!--MEKFNT glyph num [0-9] $pass-->
 
-			<!-- symbols -->
-			<!--MEKFNT glyph sym Acute ´-->
-			<!--MEKFNT glyph sym Ampersand &-->
-			<!--MEKFNT glyph sym Apostrophe '-->
-			<!--MEKFNT glyph sym Asterisk *-->
-			<!--MEKFNT glyph sym At @-->
-			<!--MEKFNT glyph sym Backslash \-->
-			<!--MEKFNT glyph sym Bar |-->
-			<!--MEKFNT glyph sym BraceLeft {-->
-			<!--MEKFNT glyph sym BraceRight }-->
-			<!--MEKFNT glyph sym BracketLeft [-->
-			<!--MEKFNT glyph sym BracketRight ]-->
-			<!--MEKFNT glyph sym BrokenBar ¦-->
-			<!--MEKFNT glyph sym Circumflex ^-->
-			<!--MEKFNT glyph sym Colon :-->
-			<!--MEKFNT glyph sym Comma ,-->
-			<!--MEKFNT glyph sym Currency ¤-->
-			<!--MEKFNT glyph sym Diaeresis ¨-->
-			<!--MEKFNT glyph sym Dollar $-->
-			<!--MEKFNT glyph sym DoubleQuote "-->
-			<!--MEKFNT glyph sym Equals =-->
-			<!--MEKFNT glyph sym Exclamation !-->
-			<!--MEKFNT glyph sym Grave `-->
-			<!--MEKFNT glyph sym Greater >-->
-			<!--MEKFNT glyph sym Less <-->
-			<!--MEKFNT glyph sym Minus --->
-			<!--MEKFNT glyph sym NumberSign #-->
-			<!--MEKFNT glyph sym OneHalf ½-->
-			<!--MEKFNT glyph sym ParenLeft (-->
-			<!--MEKFNT glyph sym ParenRight )-->
-			<!--MEKFNT glyph sym Percent %-->
-			<!--MEKFNT glyph sym Period .-->
-			<!--MEKFNT glyph sym Plus +-->
-			<!--MEKFNT glyph sym Question ?-->
-			<!--MEKFNT glyph sym Section §-->
-			<!--MEKFNT glyph sym Semicolon ;-->
-			<!--MEKFNT glyph sym Slash /-->
-			<!--MEKFNT glyph sym Sterling £-->
-			<!--MEKFNT glyph sym Tilde ~-->
-			<!--MEKFNT glyph sym Underscore _-->
+      <!-- symbols -->
+      <!--MEKFNT glyph sym Acute ´-->
+      <!--MEKFNT glyph sym Ampersand &-->
+      <!--MEKFNT glyph sym Apostrophe '-->
+      <!--MEKFNT glyph sym Asterisk *-->
+      <!--MEKFNT glyph sym At @-->
+      <!--MEKFNT glyph sym Backslash \-->
+      <!--MEKFNT glyph sym Bar |-->
+      <!--MEKFNT glyph sym BraceLeft {-->
+      <!--MEKFNT glyph sym BraceRight }-->
+      <!--MEKFNT glyph sym BracketLeft [-->
+      <!--MEKFNT glyph sym BracketRight ]-->
+      <!--MEKFNT glyph sym BrokenBar ¦-->
+      <!--MEKFNT glyph sym Circumflex ^-->
+      <!--MEKFNT glyph sym Colon :-->
+      <!--MEKFNT glyph sym Comma ,-->
+      <!--MEKFNT glyph sym Currency ¤-->
+      <!--MEKFNT glyph sym Diaeresis ¨-->
+      <!--MEKFNT glyph sym Dollar $-->
+      <!--MEKFNT glyph sym DoubleQuote "-->
+      <!--MEKFNT glyph sym Equals =-->
+      <!--MEKFNT glyph sym Exclamation !-->
+      <!--MEKFNT glyph sym Grave `-->
+      <!--MEKFNT glyph sym Greater >-->
+      <!--MEKFNT glyph sym Less <-->
+      <!--MEKFNT glyph sym Minus --->
+      <!--MEKFNT glyph sym NumberSign #-->
+      <!--MEKFNT glyph sym OneHalf ½-->
+      <!--MEKFNT glyph sym ParenLeft (-->
+      <!--MEKFNT glyph sym ParenRight )-->
+      <!--MEKFNT glyph sym Percent %-->
+      <!--MEKFNT glyph sym Period .-->
+      <!--MEKFNT glyph sym Plus +-->
+      <!--MEKFNT glyph sym Question ?-->
+      <!--MEKFNT glyph sym Section §-->
+      <!--MEKFNT glyph sym Semicolon ;-->
+      <!--MEKFNT glyph sym Slash /-->
+      <!--MEKFNT glyph sym Sterling £-->
+      <!--MEKFNT glyph sym Tilde ~-->
+      <!--MEKFNT glyph sym Underscore _-->
 
-			<glyph unicode=" " horiz-adv-x="3"></glyph>
-		</font>
-	</defs>
+      <glyph unicode=" " horiz-adv-x="3" />
+    </font>
+  </defs>
 </svg>

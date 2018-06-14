@@ -6,6 +6,8 @@ import Data.List
 import System.FilePath.Glob
 import System.IO
 
+import Util
+
 --                    <path/>,w  ,h
 getGlyph :: String -> (String,Int,Int)
 getGlyph svg =
@@ -15,10 +17,6 @@ getGlyph svg =
       dropWhites (' ':' ':xs) = dropWhites $ ' ':xs
       dropWhites (x:xs)       = x : dropWhites xs
       dropWhites xs           = xs
-      readint :: String -> (Int,String)
-      readint xs                                   = readint' xs ""
-      readint' (x:xs) accum | x >= '0' && x <= '9' = readint' xs $ accum ++ [x]
-                            | otherwise            = (read accum :: Int,x:xs)
       go :: String -> Int -> Int -> (String,Int,Int)
       -- extract glyph dimensions
       go ('<':'s':'v':'g':' ':xs) w h =
@@ -85,8 +83,79 @@ xmlEscape ('\'':xs) = '&':'a':'p':'o':'s':';': xmlEscape xs
 xmlEscape (x:xs)   = x : xmlEscape xs
 xmlEscape xs       = xs
 
+unTranslate :: String -> String
+unTranslate ('<':'p':'a':'t':'h':xs) =
+  let (dx,dy) = findTs xs
+  --in  "<!-- " ++ show dx ++ "," ++ show dy ++ "--><path" ++ puukotaP (dx,dy) xs
+  in  "<path" ++ puukotaP (dx,dy) xs
+  where findTs ('/':'>':xs) = (0,0)
+        findTs ('t':'r':'a':'n':'s':'l':'a':'t':'e':'(':r0) =
+          let (x,r1) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r0
+              (y,r2) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r1
+          in  (x,y)
+        findTs (x:xs) = findTs xs
+        findTs xs     = (0,0)
+        puukotaP dc ('/':'>':xs) = "/>" ++ unTranslate xs
+        puukotaP dc (' ':'t':'r':'a':'n':'s':'f':'o':'r':'m':'=':'"':xs) = del xs where
+          del ('"':xs) = puukotaP dc xs
+          del (x:xs)   = del xs
+          del xs       = puukotaP dc xs
+        puukotaP (dx,dy) ('d':'=':'"':xs) = "d=\"" ++ pp xs where
+          pp ('"':xs) = '"':puukotaP (dx,dy) xs
+          pp ('M':r0) =
+            let (x,r1) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r0
+                (y,r2) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r1
+                nx     = x + dx
+                ny     = y + dy
+            in  'M': show nx ++ " " ++ show ny ++ pp r2
+          pp (x:xs) | x == 'H' || x == 'V' = let (oi,rest) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) xs
+                                                 ni        = oi + (case x of 'H' -> dx
+                                                                             'V' -> dy)
+                                             in  x : show ni ++ pp rest
+          pp (x:xs) = x : pp xs
+          pp xs = puukotaP (dx,dy) xs
+        puukotaP ds (x:xs) = x : puukotaP ds xs
+        puukotaP ds xs     = unTranslate xs
+unTranslate (x:xs) = x:unTranslate xs
+unTranslate xs     = xs
+
+-- for a single glyph
+extractD :: String -> String
+extractD ('<':'p':'a':'t':'h':xs) = go xs where
+  go ('d':'=':'"':xs) = "d=\"" ++ go2 xs where
+    go2 ('"':xs) = "\""
+    go2 (x:xs)   = x:go2 xs
+    go2 xs       = ""
+  go (x:xs) = go xs
+  go xs = ""
+extractD (x:xs) = x:extractD xs
+extractD xs = xs
+
+-- for a single glyph
+convertY :: Int -> String -> String
+convertY height ('d':'=':'"':xs) = "d=\"" ++ go xs where
+  read1 r0 = let (y,r1) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r0
+             in  (y,r1)
+  read2 r0 = let (x,r1) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r0
+                 (y,r2) = readint $ dropWhile (\i -> i /= '-' && (i < '0' || i > '9')) r1
+             in  (x,y,r2)
+  go ('"':xs) = '"' : xs
+  go (x:xs) =
+    x : case x of
+          'M' -> let (x,y,r) = read2 xs
+                 in  show x ++ " " ++ show (height - y) ++ go r
+          'm' -> let (x,y,r) = read2 xs
+                 in  show x ++ " " ++ show (-y) ++ go r
+          'V' -> let (y,r) = read1 xs
+                 in  show (height - y) ++ go r
+          'v' -> let (y,r) = read1 xs
+                 in  show (-y) ++ go r
+          _ -> go xs
+convertY height (x:xs) = x : convertY height xs
+convertY height xs = ""
+
 genSingleGlyph :: (String,String,Int,Int) -> String
-genSingleGlyph (unicode,path,width,height) = "<glyph unicode=\"" ++ xmlEscape unicode ++ "\" horiz-adv-x=\"" ++ show (width - 2) ++ "\">" ++ path ++ "</glyph>"
+genSingleGlyph (unicode,path,width,height) = "<glyph unicode=\"" ++ xmlEscape unicode ++ "\" horiz-adv-x=\"" ++ show (width - 1) ++ "\" " ++ convertY height (extractD (unTranslate path)) ++ "/>"
 
 genGlyphA :: [String] -> IO String
 genGlyphA [c,f,u] = genGlyph c f u
