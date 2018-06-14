@@ -26,6 +26,8 @@
       </font-face>
       <missing-glyph horiz-adv-x="5" d="M0 0 h4 v8 h-4 Z" />
 
+      <glyph unicode=" " horiz-adv-x="3" />
+
       <!-- Our generator will turn the following into good stuff™ -->
       <!-- It'll read our glyph files and drop the style attribute of each symbol -->
 
@@ -82,8 +84,6 @@
       <!--MEKFNT glyph sym Sterling £-->
       <!--MEKFNT glyph sym Tilde ~-->
       <!--MEKFNT glyph sym Underscore _-->
-
-      <glyph unicode=" " horiz-adv-x="3" />
     </font>
   </defs>
 </svg>
