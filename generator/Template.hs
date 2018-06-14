@@ -22,6 +22,7 @@ transformXMLFile f = do
 transformXML :: String -> IO String
 transformXML xs = trs "" xs >>= \s -> return $ scaleDimensions s
   where
+    trs ident ('\n':xs) = trs ""              xs >>= \s -> return $ '\n' : s
     trs ident (' ':xs)  = trs (ident ++ " ")  xs >>= \s -> return $ ' '  : s
     trs ident ('\t':xs) = trs (ident ++ "\t") xs >>= \s -> return $ '\t' : s
     trs ident ('<':'!':'-':'-':'M':'E':'K':'F':'N':'T':' ':xs)
@@ -31,10 +32,10 @@ transformXML xs = trs "" xs >>= \s -> return $ scaleDimensions s
                           s <- genGlyphA a
                           return $ intercalate ('\n':ident) s
                         (c:a)       -> error $ "Unknown font command " ++ show c
-        in do suffix <- trs "" rest
+        in do suffix <- trs ident rest
               prefix <- process
               return $ prefix ++ suffix
-    trs ident (x:xs) = do rest <- trs "" xs
+    trs ident (x:xs) = do rest <- trs (ident ++ " ") xs
                           return $ x:rest
     trs ident _      = return ""
 
