@@ -27,10 +27,10 @@ transformXML xs = trs "" xs >>= \s -> return $ scaleDimensions s
     trs ident ('\t':xs) = trs (ident ++ "\t") xs >>= \s -> return $ '\t' : s
     trs ident ('<':'!':'-':'-':'M':'E':'K':'F':'N':'T':' ':xs)
       = let (args,rest) = argify xs
+            indentA iol = do parts <- iol
+                             return $ intercalate ('\n':ident) parts
             process = case args of
-                        ("glyph":a) -> do
-                          s <- genGlyphA a
-                          return $ intercalate ('\n':ident) s
+                        ("glyph":a) -> indentA $ genGlyphA a
                         (c:a)       -> error $ "Unknown font command " ++ show c
         in do suffix <- trs ident rest
               prefix <- process
