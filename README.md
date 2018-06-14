@@ -5,12 +5,10 @@ things and stuff, including my avatar and fancy shmancy keyboard. The
 individual glyphs reside under the `glyphs/` directory in a reasonably named
 fashion.
 
-As of right now, this is a work in progress as I hand-author reasonable SVG
-paths for the glyphs themselves.
-
 ## Building the font/doing anything at all what-so-ever
 
-*TBD*
+You'll need both FontForge and stack (the Haskell utility). Once you have
+those, you can just run `generator/build.sh`.
 
 ## What's done
 
@@ -24,4 +22,4 @@ paths for the glyphs themselves.
 
 - [ ] Font
 	- [ ] Glyph metadata? Think baseline/spacing/etc.
-	- [ ] Font generator utility/script
+	- [x] Font generator utility/script

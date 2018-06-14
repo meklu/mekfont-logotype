@@ -18,7 +18,7 @@ _ck () {
 }
 
 printf "%s ... " "Initialising environment"
-stack build
+(stack build && mkdir -p ../build/)
 _ck
 printf "$_f" Building "$PWD" svg
 stack ghc Template.hs -- -e 'buildTpl "../mekfont-logotype-template.svg" "../build/mekfont-logotype.svg"' 2>/dev/null
