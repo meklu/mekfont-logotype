@@ -155,7 +155,7 @@ convertY height (x:xs) = x : convertY height xs
 convertY height xs = ""
 
 genSingleGlyph :: (String,String,Int,Int) -> String
-genSingleGlyph (unicode,path,width,height) = "<glyph unicode=\"" ++ xmlEscape unicode ++ "\" horiz-adv-x=\"" ++ show (width - 1) ++ "\" " ++ convertY height (extractD (unTranslate path)) ++ "/>"
+genSingleGlyph (unicode,path,width,height) = "<glyph unicode=\"" ++ xmlEscape unicode ++ "\" horiz-adv-x=\"" ++ show (width - 1) ++ "\" " ++ convertY (height - 2) (extractD (unTranslate path)) ++ "/>"
 
 genGlyphA :: [String] -> IO String
 genGlyphA [c,f,u] = genGlyph c f u
