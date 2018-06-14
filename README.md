@@ -21,5 +21,6 @@ those, you can just run `generator/build.sh`.
 	- [ ] Auxiliary keyboard imagery
 
 - [ ] Font
+	- [x] Font template
 	- [ ] Glyph metadata? Think baseline/spacing/etc.
 	- [x] Font generator utility/script
