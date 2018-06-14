@@ -157,11 +157,11 @@ convertY height xs = ""
 genSingleGlyph :: (String,String,Int,Int) -> String
 genSingleGlyph (unicode,path,width,height) = "<glyph unicode=\"" ++ xmlEscape unicode ++ "\" horiz-adv-x=\"" ++ show (width - 1) ++ "\" " ++ convertY (height - 2) (extractD (unTranslate path)) ++ "/>"
 
-genGlyphA :: [String] -> IO String
+genGlyphA :: [String] -> IO [String]
 genGlyphA [c,f,u] = genGlyph c f u
 genGlyphA args    = error $ "Wrong number of arguments to genGlyphA!"
 
-genGlyph :: String -> String -> String -> IO String
+genGlyph :: String -> String -> String -> IO [String]
 genGlyph category file unicode = do
   glyphs <- getGlyphsF category file unicode
-  return $ intercalate "\n" (map genSingleGlyph glyphs)
+  return $ map genSingleGlyph glyphs

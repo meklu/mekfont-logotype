@@ -1,6 +1,7 @@
 module Template where
 
 import Control.Monad
+import Data.List
 import System.IO
 
 import Glyph
@@ -19,19 +20,23 @@ transformXMLFile f = do
   transformXML s
 
 transformXML :: String -> IO String
-transformXML xs = trs xs >>= \s -> return $ scaleDimensions s
+transformXML xs = trs "" xs >>= \s -> return $ scaleDimensions s
   where
-    trs ('<':'!':'-':'-':'M':'E':'K':'F':'N':'T':' ':xs)
+    trs ident (' ':xs)  = trs (ident ++ " ")  xs >>= \s -> return $ ' '  : s
+    trs ident ('\t':xs) = trs (ident ++ "\t") xs >>= \s -> return $ '\t' : s
+    trs ident ('<':'!':'-':'-':'M':'E':'K':'F':'N':'T':' ':xs)
       = let (args,rest) = argify xs
             process = case args of
-                        ("glyph":a) -> genGlyphA a
+                        ("glyph":a) -> do
+                          s <- genGlyphA a
+                          return $ intercalate ('\n':ident) s
                         (c:a)       -> error $ "Unknown font command " ++ show c
-        in do suffix <- trs rest
+        in do suffix <- trs "" rest
               prefix <- process
               return $ prefix ++ suffix
-    trs (x:xs) = do rest <- trs xs
-                    return $ x:rest
-    trs _      = return ""
+    trs ident (x:xs) = do rest <- trs "" xs
+                          return $ x:rest
+    trs ident _      = return ""
 
 -- stupid stuff, pls ignore
 scaleDimensions :: String -> String
