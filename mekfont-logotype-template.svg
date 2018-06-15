@@ -84,6 +84,9 @@
       <!--MEKFNT glyph sym Sterling £-->
       <!--MEKFNT glyph sym Tilde ~-->
       <!--MEKFNT glyph sym Underscore _-->
+      <!--MEKFNT glyph sym Copyright ©-->
+      <!--MEKFNT glyph sym Copyleft �-->
+      <!--MEKFNT glyph sym Registered ®-->
     </font>
   </defs>
 </svg>
