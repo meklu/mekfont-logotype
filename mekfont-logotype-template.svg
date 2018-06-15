@@ -24,9 +24,9 @@
           <font-face-name name="mekfont-logo" />
         </font-face-src>
       </font-face>
-      <missing-glyph horiz-adv-x="5" d="M0 0 h4 v8 h-4 Z" />
+      <missing-glyph horiz-adv-x="5" d="M0 -2 h4 v8 h-4 Z" />
 
-      <glyph unicode=" " horiz-adv-x="3" />
+      <glyph unicode=" " horiz-adv-x="3" d="M0 0Z"></glyph>
 
       <!-- Our generator will turn the following into good stuff™ -->
       <!-- It'll read our glyph files and drop the style attribute of each symbol -->

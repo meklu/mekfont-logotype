@@ -20,7 +20,8 @@ those, you can just run `generator/build.sh`.
 	- [x] Symbols
 	- [ ] Auxiliary keyboard imagery
 
-- [ ] Font
+- [x] Font
 	- [x] Font template
-	- [ ] Glyph metadata? Think baseline/spacing/etc.
+	- [x] Glyph metadata? Think baseline/spacing/etc.
+		- This is nastily guessti-parsed at the moment but it works
 	- [x] Font generator utility/script
